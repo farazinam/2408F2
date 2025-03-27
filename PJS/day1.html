@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PJS</title>
+</head>
+<body>
+    <h1>Data Types</h1>
+
+    <script>
+        //primitive
+        var name = 'ali';   //string
+        var age = 22;  // Integer/Number
+        var isEligible = true;  // boolean
+        var n = null;
+        var u;  //undefied/declare
+        
+        // result 
+        document.write(name + "<br>") 
+        document.write(typeof(name) + "<hr>")
+
+        document.write(age + "<br>") 
+        document.write(typeof(age) + "<hr>")
+
+        document.write(isEligible + "<br>") 
+        document.write(typeof(isEligible) + "<hr>")
+
+        document.write(n + "<br>") 
+        document.write(typeof(n) + "<hr>")
+
+        document.write(u + "<br>") 
+        document.write(typeof(u) + "<hr>")
+        document.write("<hr>")
+
+        //non-primitive
+        var a = [2,4,6,8,10];
+
+        document.write(a[0] + "<br>") 
+        document.write(a[1] + "<br>") 
+        document.write(a[2] + "<br>") 
+        document.write(a[3] + "<br>") 
+        document.write(a[4] + "<br>") 
+        
+        var o = {name: 'bilal', age:  27};   //object
+        document.write(typeof(a) + "<hr>")
+        document.write(typeof(o) + "<hr>")
+        
+        function abc(){
+            document.write('Hello PJS')
+        }
+        document.write(typeof(abc) + "<hr>")
+
+
+    </script>
+</body>
+</html>
