@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form onsubmit="return abc()">
+    <label for="">name</label>
+    <input type="text">
+    <p style="color: red;"></p>
+
+    <button type="submit">Submit</button>
+    </form>
+
+    <script>
+
+        function abc(){
+        var namepatt = /^\w+$/;
+        var holdnamehere = document.getElementsByTagName('input')[0].value;
+        var holderrorhere = document.getElementsByTagName('p')[0];
+
+        if(holdnamehere == ''){
+        holderrorhere.innerHTML = 'Please Provide Name';
+        return false;
+        }
+        else if(!namepatt.test(holdnamehere)){
+         holderrorhere.innerHTML = 'Please Provide Valid Name'
+         return false;
+     }
+    else{
+        alert('form Submitted Successfully')
+    }
+        }
+    </script>
+</body>
+</html>
