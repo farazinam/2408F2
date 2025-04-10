@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Marksheet</h1>
+
+    <form action="" onsubmit="abc()">
+        <label for="">Name</label>
+        <input type="text"> <br>
+
+        <label for="">English</label>
+        <input type="text"> <br>
+
+        <label for="">Urdu</label>
+        <input type="text"> <br>
+
+        <label for="">Math</label>
+        <input type="text"> <br>
+
+        <button type="submit">Get</button>
+    </form>
+
+    <!-- <div style="visibility: hidden;"> -->
+       name <span></span>  <br>
+       obt <span></span> <br>
+       per <span></span> <br>
+       grade <span></span> <br>
+    <!-- </div>  -->
+
+    <script>
+        function abc(){
+            event.preventDefault();
+           var name = document.getElementsByTagName('input')[0].value;
+           var eng = parseInt(document.getElementsByTagName('input')[1].value);
+           var urdu = parseInt(document.getElementsByTagName('input')[2].value);
+           var math = parseInt(document.getElementsByTagName('input')[3].value);
+
+           var obtMarks = eng + urdu + math;
+           //alert(obtMarks);
+
+           var per = obtMarks/300*100;
+
+           per = Math.round(per);
+
+           var grade;
+           if(per >= 80 && per <= 100){
+            grade = "A+"
+           }
+           else if(per >= 70 && per <= 79){
+            grade = "A"
+           }
+           else if(per >= 60 && per <= 69){
+            grade = "B"
+           }
+
+
+           sessionStorage.setItem('name:', name);
+           sessionStorage.setItem('obt:', obtMarks);
+           sessionStorage.setItem('percentage:', per);
+           sessionStorage.setItem('Grade:', grade);
+           
+           
+        }
+    </script>
+</body>
+</html>
