@@ -35,11 +35,14 @@
 
 
       <script>
+        let editRow = null;
         function abc(){
-            event.preventDefault();
-            pn = document.getElementById('pn').value;
-            pp = document.getElementById('pp').value;
 
+          event.preventDefault();
+          pn = document.getElementById('pn').value;
+          pp = document.getElementById('pp').value;
+          
+            if(editRow == null){
             table = document.getElementById('t');
             var count = table.rows.length;
             var row = table.insertRow();
@@ -48,6 +51,12 @@
             row.insertCell(2).innerHTML = pp;
             row.insertCell(3).innerHTML = "<button onclick='del(this)' class='btn btn-danger'> Delete </button>";
             row.insertCell(4).innerHTML = "<button onclick='upd(this)' class='btn btn-warning'> Edit </button>";
+            }
+            else{
+              editRow.cells[1].innerHTML = pn;
+              editRow.cells[2].innerHTML = pp;
+              editRow = null;
+            }
             cl()
         }
 
@@ -57,8 +66,13 @@
            //document.getElementById('t').deleteRow(currentRow.rowIndex);
            if(confirm("Are You Sure You want to delete this record?")){
                table.deleteRow(currentRow.rowIndex);
-           }
-           
+           } 
+        }
+
+        function upd(u){
+          editRow = u.parentElement.parentElement;
+          document.getElementById('pn').value = editRow.cells[1].innerHTML;
+          document.getElementById('pp').value = editRow.cells[2].innerHTML;
         }
 
         function cl(){
