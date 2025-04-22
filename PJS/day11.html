@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Type Movie name here</label>
+        <input type="text">
+        <button type="button" onclick="xyz()">Search</button>
+    </form>
+
+    <h3></h3>
+    <h3></h3>
+    <h3></h3>
+    <h3></h3>
+    <h3></h3>
+    <h3></h3>
+    <img src="" alt="">
+
+    <script>
+        async function xyz(){
+            //event.preventDefault();
+            var moviename = document.getElementsByTagName('input')[0].value;
+            var apiurl = 'http://www.omdbapi.com/?t=' + moviename + '&apikey=6fcc40ca';
+            var fetchmovie = await fetch(apiurl);
+            var converted = await fetchmovie.json();
+            document.getElementsByTagName('h3')[0].innerHTML ="Title :" + converted.Title;
+            document.getElementsByTagName('h3')[1].innerHTML ="Year :" + converted.Year;
+            document.getElementsByTagName('h3')[2].innerHTML ="Released Date :" + converted.Released;
+            document.getElementsByTagName('h3')[3].innerHTML ="Genre :" + converted.Genre;
+            document.getElementsByTagName('h3')[4].innerHTML ="Actors :" + converted.Actors;
+            document.getElementsByTagName('h3')[5].innerHTML ="Language :" + converted.Language;
+            document.getElementsByTagName('img')[0].src = converted.Poster;
+        }
+    </script>
+</body>
+</html>

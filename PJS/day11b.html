@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Type City name here</label>
+        <input type="text">
+        <button type="button" onclick="xyz()">Search</button>
+    </form>
+
+    <h3></h3>
+    <h3></h3>
+    <img src="" alt=""> 
+
+
+    <script>
+        async function xyz(){
+            //event.preventDefault();
+            var city = document.getElementsByTagName('input')[0].value;
+            var apiurl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=70cf87dc2871e81860dd58eee6d1d4de&units=metric";
+            var fetchmovie = await fetch(apiurl);
+            var converted = await fetchmovie.json();
+            document.getElementsByTagName('h3')[0].innerHTML ="Temperature :" + converted.main.temp;
+            document.getElementsByTagName('h3')[1].innerHTML ="Feels Like :" + converted.main.feels_like;
+         
+            var icon = converted.weather[0].icon;
+            let iconURL = "https://www.openweathermap.org/img/w/" + icon + ".png";
+            document.getElementsByTagName('img')[0].src = iconURL;
+        }
+    </script>
+</body>
+</html>
