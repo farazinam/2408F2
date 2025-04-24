@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Validation Using Javascript</h1>
+
+    <form  onsubmit="return v()">
+
+        <label for="">Name</label>
+        <input type="text"> <br>
+        <p></p>
+
+        <label for="">Age</label>
+        <input type="text"> <br>
+       <p></p>
+
+        <label for="">Email</label>
+        <input type="text"> <br>
+        <p></p>
+
+        <button type="submit">OK</button>
+
+    </form>
+
+    
+
+    <script>
+        function v(){
+            
+        var namePatt = /^[A-Za-z]{3,30}$/;  //name patt
+        var agePatt = /^\d{2}$/;  //age patt
+        var emailPatt = /^[\w\.=-]+@[\w\.-]+\.[\w]{2,3}$/; //email patt
+
+        var name = document.getElementsByTagName('input')[0].value;
+        var age = document.getElementsByTagName('input')[1].value;
+        var email = document.getElementsByTagName('input')[2].value;
+
+        var nameError = document.getElementsByTagName('p')[0];
+        var ageError = document.getElementsByTagName('p')[1];
+        var emailError = document.getElementsByTagName('p')[2];
+
+        if(name == ''){
+            nameError.innerHTML = 'Name is Required'
+            return false;
+        }
+        else if(!namePatt.test(name)){
+            nameError.innerHTML = 'Name is invalid'
+            return false;
+        }
+        else if(age == ''){
+            nameError.innerHTML = ''
+            ageError.innerHTML = 'Age is Required'
+            return false;
+        }
+        else if(!agePatt.test(age)){
+            nameError.innerHTML = ''
+            ageError.innerHTML = 'Age is invalid'
+            return false;
+        }
+        else if(email == ''){
+             ageError.innerHTML = ''
+            emailError.innerHTML ='Email is Required'
+            return false;
+        }
+        else if(!emailPatt.test(email)){
+             ageError.innerHTML = ''
+            emailError.innerHTML = 'Email is invalid'
+            return false;
+        }
+        else{
+            alert('Registerted Successfully!')
+        }
+
+    }
+
+    </script>
+</body>
+</html>

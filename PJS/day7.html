@@ -59,10 +59,25 @@
 
            document.getElementsByTagName('div')[0].style.visibility = 'visible';
            
-           var setName = document.getElementsByTagName('span')[0].innerHTML = name;
-           var setObtm = document.getElementsByTagName('span')[1].innerHTML = obtMarks;
-           var setPer = document.getElementsByTagName('span')[2].innerHTML = per;
-           var setGrade = document.getElementsByTagName('span')[3].innerHTML = grade;
+        //    var setName = document.getElementsByTagName('span')[0].innerHTML = name;
+        //    var setObtm = document.getElementsByTagName('span')[1].innerHTML = obtMarks;
+        //    var setPer = document.getElementsByTagName('span')[2].innerHTML = per;
+        //    var setGrade = document.getElementsByTagName('span')[3].innerHTML = grade;
+
+        //session storage
+        sessionStorage.setItem("Name" , name)
+        sessionStorage.setItem("Percentage" , per)
+        sessionStorage.setItem("Grade" , grade)
+
+        var n = sessionStorage.getItem("Name")
+        var p = sessionStorage.getItem("Percentage")
+        var g = sessionStorage.getItem("Grade")
+
+           document.getElementsByTagName('span')[0].innerHTML = n;
+           //var setObtm = document.getElementsByTagName('span')[1].innerHTML = obtMarks;
+           document.getElementsByTagName('span')[1].innerHTML = p;
+           document.getElementsByTagName('span')[2].innerHTML = g;
+
            
         }
     </script>

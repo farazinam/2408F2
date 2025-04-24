@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marksheet Calculator</title>
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px;
+      width: 100%;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Marksheet Calculator</h2>
+
+  <label>Student Name:</label>
+  <input type="text" id="studentName" />
+
+  <label>Subject 1 Marks:</label>
+  <input type="number" id="sub1" />
+
+  <label>Subject 2 Marks:</label>
+  <input type="number" id="sub2" />
+
+  <label>Subject 3 Marks:</label>
+  <input type="number" id="sub3" />
+
+  <button onclick="calculateMarksheet()">Calculate & Save</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculateMarksheet() {
+      const name = document.getElementById("studentName").value;
+      const sub1 = parseInt(document.getElementById("sub1").value) || 0;
+      const sub2 = parseInt(document.getElementById("sub2").value) || 0;
+      const sub3 = parseInt(document.getElementById("sub3").value) || 0;
+
+      const total = sub1 + sub2 + sub3;
+      const average = total / 3;
+      let grade = "";
+
+      if (average >= 90) grade = "A";
+      else if (average >= 80) grade = "B";
+      else if (average >= 70) grade = "C";
+      else if (average >= 60) grade = "D";
+      else grade = "F";
+
+      const result = {
+        name,
+        sub1,
+        sub2,
+        sub3,
+        total,
+        average: average.toFixed(2),
+        grade
+      };
+
+      sessionStorage.setItem("marksheet", JSON.stringify(result));
+      displayResult(result);
+    }
+
+    function displayResult(data) {
+      document.getElementById("result").innerHTML = `
+        <strong>Student Name:</strong> ${data.name}<br>
+        <strong>Subject 1:</strong> ${data.sub1}<br>
+        <strong>Subject 2:</strong> ${data.sub2}<br>
+        <strong>Subject 3:</strong> ${data.sub3}<br>
+        <strong>Total Marks:</strong> ${data.total}<br>
+        <strong>Average:</strong> ${data.average}<br>
+        <strong>Grade:</strong> ${data.grade}
+      `;
+    }
+  </script>
+
+</body>
+</html>
