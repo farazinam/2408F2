@@ -195,3 +195,100 @@ SELECT COUNT(*) FROM students;
 SELECT COUNT(email) FROM students;
 
 SELECT COUNT(*) FROM students;
+
+SELECT * FROM pyaraybachay;
+
+-- ----------------------------------------------- Day 5 --------------------------------------------------
+
+SELECT COUNT(*) FROM pyaraybachay;
+SELECT COUNT(age) FROM pyaraybachay;
+SELECT COUNT(shehr) FROM pyaraybachay;
+
+SELECT * FROM students;
+SELECT naam, MAX(age) FROM students;
+SELECT MIN(age) FROM students;
+SELECT AVG(age) FROM students;
+SELECT SUM(age) FROM students;
+
+SELECT * FROM pyaraybachay;
+SELECT shehr AS City FROM pyaraybachay;
+
+
+CREATE TABLE employees (
+    emp_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    department VARCHAR(50),
+    salary DECIMAL(10, 2),
+    join_date DATE
+);
+
+INSERT INTO employees (name, department, salary, join_date) VALUES
+('Alice', 'HR', 50000, '2020-01-15'),
+('Bob', 'Sales', 60000, '2019-03-22'),
+('Charlie', 'HR', 52000, '2021-06-10'),
+('David', 'IT', 70000, '2018-11-03'),
+('Eva', 'IT', 75000, '2017-05-19'),
+('Frank', 'Sales', 58000, '2020-02-25'),
+('Grace', 'Finance', 67000, '2019-07-30'),
+('Hannah', 'Finance', 69000, '2020-09-14'),
+('Ian', 'HR', 53000, '2021-01-10'),
+('Jack', 'IT', 72000, '2022-03-05'),
+('Karen', 'Sales', 61000, '2021-04-18'),
+('Leo', 'Finance', 65000, '2018-08-23'),
+('Mia', 'IT', 74000, '2020-12-12'),
+('Nina', 'Sales', 62000, '2022-02-27'),
+('Oscar', 'Finance', 68000, '2020-10-05'),
+('Paul', 'HR', 51000, '2021-07-16'),
+('Queen', 'IT', 73000, '2019-06-11'),
+('Ron', 'Sales', 60500, '2018-04-01'),
+('Sophia', 'Finance', 66000, '2017-09-25'),
+('Tom', 'HR', 54000, '2023-01-02'),
+('Uma', 'Sales', 61500, '2021-11-20'),
+('Victor', 'Finance', 64500, '2022-07-13'),
+('Wendy', 'IT', 76500, '2023-03-29'),
+('Xander', 'HR', 55000, '2020-06-08'),
+('Yara', 'Sales', 63000, '2022-12-04'),
+('Zane', 'Finance', 64000, '2021-09-30'),
+('Aaron', 'IT', 71000, '2019-10-18'),
+('Bella', 'Sales', 60000, '2023-04-25'),
+('Cody', 'HR', 50000, '2022-05-15'),
+('Daisy', 'Finance', 65500, '2023-02-22');
+
+SELECT * FROM employees;
+
+SELECT name, SUM(salary) FROM employees;
+SELECT name, MIN(salary) FROM employees;
+SELECT name, MAX(salary) FROM employees;
+
+SELECT department, SUM(salary) FROM employees
+GROUP BY department;
+
+SELECT department, SUM(salary) FROM employees
+WHERE join_date = '2020-01-15' GROUP BY department;
+
+-- Show departments having more than 4 employees
+SELECT department, COUNT(*) AS emp_count
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 7;
+
+SELECT department, SUM(salary) AS emp_count
+FROM employees
+GROUP BY department
+HAVING COUNT(*) > 7;
+
+-- JOINS
+SELECT name, salary FROM employees WHERE salary = (SELECT MIN(salary) FROM employees);
+SELECT name, salary FROM employees WHERE salary = (SELECT MAX(salary) FROM employees);
+SELECT AVG(salary) FROM employees;
+
+
+
+
+
+
+
+
+
+
+
