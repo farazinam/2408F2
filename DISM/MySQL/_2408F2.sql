@@ -277,17 +277,62 @@ FROM employees
 GROUP BY department
 HAVING COUNT(*) > 7;
 
--- JOINS
+-- Subquerries
 SELECT name, salary FROM employees WHERE salary = (SELECT MIN(salary) FROM employees);
 SELECT name, salary FROM employees WHERE salary = (SELECT MAX(salary) FROM employees);
 SELECT AVG(salary) FROM employees;
 
 
+-- ----------------------------------------------- Day 6 --------------------------------------------------
 
+-- Joins
 
+CREATE TABLE department (
+deptId INT PRIMARY KEY auto_increment,
+deptName VARCHAR(100) UNIQUE NOT NULL);
 
+INSERT INTO department (deptName)
+VALUES ('HR'),
+('Marketing'),
+('SRO');
 
+CREATE TABLE employee (
+empId INT PRIMARY KEY,
+empName VARCHAR(100) UNIQUE NOT NULL,
+departmentId INT,
+FOREIGN KEY (departmentId) REFERENCES department (deptId));
 
+INSERT INTO employee (empId, empName, departmentId)
+VALUES (101, 'Qasim', 1),
+(102, 'Kashan', 1),
+(103, 'Shahbaz', 2),
+(104, 'Ifrah', 3),
+(105, 'Muntazir', 1),
+(106, 'Wasay', 3),
+(107, 'Alaina', 2),
+(108, 'Abdul Rehman', 3),
+(109, 'Ayesha', 1);
+
+SELECT * FROM department;
+SELECT * FROM employee;
+
+-- join query
+--- inner join ----
+SELECT * FROM employee
+INNER JOIN department
+ON department.deptId = employee.departmentId;
+
+SELECT empName, deptName FROM employee
+INNER JOIN department
+ON department.deptId = employee.departmentId;
+
+SELECT employee.empName, department.deptName FROM employee
+INNER JOIN department
+ON department.deptId = employee.departmentId;
+
+SELECT e.empName, d.deptName FROM employee AS e
+INNER JOIN department AS d
+ON d.deptId = e.departmentId;
 
 
 
