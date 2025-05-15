@@ -330,9 +330,76 @@ SELECT employee.empName, department.deptName FROM employee
 INNER JOIN department
 ON department.deptId = employee.departmentId;
 
+SELECT e.empName, d.deptName FROM employee e
+INNER JOIN department d
+ON d.deptId = e.departmentId;
+
 SELECT e.empName, d.deptName FROM employee AS e
 INNER JOIN department AS d
 ON d.deptId = e.departmentId;
+
+
+-- ----------------------------------------------- Day 7 --------------------------------------------------
+
+INSERT INTO employee (empId, empName, departmentId)
+VALUES (110, 'Ali', Null),
+(111, 'Muzammil', 3),
+(112, 'Hamza', Null),
+(113, 'Hammad', Null);
+
+INSERT INTO department (deptName)
+VALUES ('Faculty'),
+('Accounts');
+
+SELECT * FROM department;
+SELECT * FROM employee;
+
+SELECT * FROM employee
+INNER JOIN department
+ON department.deptId = employee.departmentId;
+
+SELECT empName, deptName FROM employee
+INNER JOIN department
+ON department.deptId = employee.departmentId;
+
+--- Outer join ----
+-- Left Join
+SELECT e.empName, d.deptName FROM employee e
+LEFT JOIN department d
+ON d.deptId = e.departmentId;
+
+-- Right Join
+SELECT e.empName, d.deptName FROM employee e
+RIGHT JOIN department d
+ON d.deptId = e.departmentId;
+
+-- Full Join
+SELECT e.empName, d.deptName FROM employee e
+RIGHT JOIN department d
+ON d.deptId = e.departmentId
+UNION
+SELECT e.empName, d.deptName FROM employee e
+LEFT JOIN department d
+ON d.deptId = e.departmentId;
+
+-- self 
+CREATE TABLE empMan (
+empId INT PRIMARY KEY AUTO_INCREMENT,
+empName VARCHAR (100) NOT NULL,
+managerId INT,
+FOREIGN KEY (managerId) REFERENCES empMan (empId));
+
+
+INSERT INTO empMan (empName, managerId)
+VALUES ('Usman', 4);
+
+SELECT * FROM empMan;
+
+SELECT e1.empName AS employee, e2.empName AS Manager
+FROM empMan AS e1
+LEFT JOIN empMan AS e2
+ON e1.empId = e2.managerId;    -- reverse this line i.e managerId first then empId
+
 
 
 
