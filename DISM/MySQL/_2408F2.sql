@@ -395,10 +395,152 @@ VALUES ('Usman', 4);
 
 SELECT * FROM empMan;
 
-SELECT e1.empName AS employee, e2.empName AS Manager
+SELECT e2.empName AS employee,  e1.empName AS Manager
 FROM empMan AS e1
-LEFT JOIN empMan AS e2
+RIGHT JOIN empMan AS e2
 ON e1.empId = e2.managerId;    -- reverse this line i.e managerId first then empId
+
+
+
+-- ----------------------------------------------- Day 8 --------------------------------------------------
+
+CREATE TABLE items (
+itemId INT PRIMARY KEY AUTO_INCREMENT,
+itemName VARCHAR (100) NOT NULL);
+
+INSERT INTO items (itemName)
+VALUES ('Shirt'),
+('Hoodie'),
+("Shoes");
+
+CREATE TABLE color (
+colorId INT PRIMARY KEY AUTO_INCREMENT,
+colorName VARCHAR (100) NOT NULL);
+
+INSERT INTO color (colorName)
+VALUES ('Red'),
+('Green'),
+("Blue");
+
+SELECT * FROM items;
+SELECT * FROM color;
+
+
+SELECT items.itemName, color.colorName
+FROM items
+CROSS JOIN color;
+
+SELECT *
+FROM items
+CROSS JOIN color;
+
+-- SUBQUERY
+
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(100)
+);
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    product_id INT,
+    customer_id INT,
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+-- Insert products
+INSERT INTO products (product_id, product_name) VALUES
+(1, 'Laptop'),
+(2, 'Smartphone'),
+(3, 'Tablet'),
+(4, 'Monitor'),
+(5, 'Keyboard');
+
+-- Insert orders
+INSERT INTO orders (order_id, product_id, customer_id) VALUES
+(1001, 1, 101),
+(1002, 2, 101),
+(1003, 3, 102),
+(1004, 4, 103),
+(1005, 1, 102),
+(1006, 2, 104);
+
+SELECT * FROM products;
+SELECT * FROM orders;
+
+-- select
+SELECT product_name
+FROM products
+WHERE product_id IN (SELECT product_id FROM orders WHERE customer_id = 101);
+
+-- --------------------------------
+-- Source table
+CREATE TABLE employees1 (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(100),
+    salary DECIMAL(10, 2)
+);
+
+-- Destination table
+CREATE TABLE employees2 (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(100),
+    salary DECIMAL(10, 2)
+);
+
+INSERT INTO employees1 (employee_id, employee_name, salary) VALUES
+(1, 'Alice', 50000),
+(2, 'Bob', 60000),
+(3, 'Charlie', 55000),
+(4, 'Diana', 70000),
+(5, 'Eve', 48000);
+
+SELECT * FROM employees1;
+SELECT * FROM employees2;
+
+SELECT AVG(salary) FROM employees1;  -- 56600
+
+-- insert 
+INSERT INTO employees2 (employee_id, employee_name, salary)
+SELECT employee_id, employee_name, salary
+FROM employees1
+WHERE salary > (SELECT AVG(salary) FROM employees1);
+
+-- ---------------------------------------
+-- update
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(100)
+);
+
+CREATE TABLE employes (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(100),
+    salary DECIMAL(10, 2),
+    department_id INT,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+-- Insert into departments
+INSERT INTO departments (department_id, department_name) VALUES
+(1, 'Sales'),
+(2, 'HR'),
+(3, 'IT');
+
+-- Insert into employees
+INSERT INTO employes (employee_id, employee_name, salary, department_id) VALUES
+(101, 'Alice', 50000, 1),
+(102, 'Bob', 55000, 1),
+(103, 'Charlie', 60000, 2),
+(104, 'Diana', 65000, 3);
+
+SELECT * FROM departments;
+SELECT * FROM employes;
+
+UPDATE employes SET salary = salary * 1.1
+WHERE department_id = (SELECT department_id FROM departments WHERE department_name = 'Sales');
+
+
 
 
 
