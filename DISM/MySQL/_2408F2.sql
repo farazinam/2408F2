@@ -541,6 +541,89 @@ UPDATE employes SET salary = salary * 1.1
 WHERE department_id = (SELECT department_id FROM departments WHERE department_name = 'Sales');
 
 
+-- ----------------------------------------------- Day 9 --------------------------------------------------
+-- Did work on phpmyadmin- Joins of 3 tables
+
+-- ----------------------------------------------- Day 10 --------------------------------------------------
+
+SELECT ACOS(0);
+SELECT COS(0);
+SELECT ASIN(0);
+SELECT SIN(0);
+SELECT ATAN(0);
+SELECT TAN(0);
+
+SELECT ROUND(2.1) AS RoundOfANumber;
+SELECT ROUND(2.4);
+SELECT ROUND(2.7);
+
+SELECT FLOOR(2.1);
+SELECT FLOOR(2.7);
+SELECT CEIL(2.9);
+SELECT CEIL(2.1);
+
+SELECT CONCAT(customer_name, ' ' , customer_city) AS Concatination FROM customer;
+
+DELIMITER //
+CREATE PROCEDURE sp_abc()
+BEGIN
+SELECT * FROM customer;
+END //
+DELIMITER ;
+
+CALL sp_abc();
+
+DELIMITER //
+CREATE PROCEDURE sp_cusCity()
+BEGIN
+SELECT * FROM customer WHERE customer_city = 'Lahore';
+END //
+DELIMITER ;
+
+CALL sp_cusCity();
+
+SELECT * FROM employees;
+
+DELIMITER //
+CREATE PROCEDURE sp_empDep(IN dept VARCHAR(100))
+BEGIN
+SELECT * FROM employees WHERE department = dept;
+END //
+DELIMITER ;
+
+CALL sp_empDep('SALES');
+
+show procedure status;
+
+drop procedure abc;
+
+--  TRNASACTION TCL
+
+START TRANSACTION;
+DELETE FROM employees WHERE emp_id = 2;
+
+COMMIT;
+
+ROLLBACK;
+
+-- add constraint after table creation
+ALTER TABLE employees
+ADD CONSTRAINT fk_dept
+FOREIGN KEY (dept_id)
+REFERENCES departments(dept_id);
+
+-- change column position
+ALTER TABLE employees
+MODIFY COLUMN emp_id INT FIRST;
+
+ALTER TABLE employees
+MODIFY COLUMN department VARCHAR(100) AFTER name;
+
+SELECT * FROM employees;
+
+
+
+
 
 
 
