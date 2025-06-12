@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <form action="day5.php" method="post">
+    <form action="day5.php" method="get">
 
         <label for="">Name</label>
         <input name="name" type="text" required> <br>
@@ -19,38 +19,29 @@
 
         <button name="sub" type="submit">Submit</button>
 
-    </form> -->
+    </form>
 
 <?php
 
 // ---- GET ----
-// if(ISSET($_GET["sub"])){
-//     $n = $_GET["name"];
-//     $a = $_GET["age"];
-//     $c = $_GET["city"];
+if(ISSET($_GET["sub"])){
+    $n = $_GET["name"];
+    $a = $_GET["age"];
+    $c = $_GET["city"];
 
-//     echo $n . " " . $a . " " . $c;
-// }
+    echo $n . " " . $a . " " . $c;
+}
 
 
 // ---- POST -----
 
-// if(ISSET($_POST["sub"])){
+// if(isset($_POST["sub"])){
 //     $n = $_POST["name"];
 //     $a = $_POST["age"];
 //     $c = $_POST["city"];
 
 //     echo $n . " " . $a . " " . $c;
-
-//     $ins = "INSERT INTO students (naam, age, email, city) VALUES ('$n',  '$a', '$e', '$c')";
-
-//     $abc = mysqli_query($con, $ins);
-
-//     if($abc){
-//         echo "<script>
-//         alert('REcord added successfully');
-//         </script>";
-//     }
+// }
 
 //break
 
@@ -86,9 +77,9 @@
 
 //-------  Pattern Matching -------
 
-$text = "Hello Guys! We are Learning PHP :)";
-$pattern = "/PHP/";
-$replace = "HyperText Preprocessor";
+// $text = "Hello Guys! We are Learning PHP :)";
+// $pattern = "/PHP/";
+// $replace = "HyperText Preprocessor";
 
 // if(preg_match($pattern, $text)){
 //     echo "Match Found";
@@ -97,8 +88,8 @@ $replace = "HyperText Preprocessor";
 //     echo "Match NOT Found";
 // }
 
-$replaced = preg_replace($pattern, $replace, $text);
-    echo $replaced;
+// $replaced = preg_replace($pattern, $replace, $text);
+//     echo $replaced;
 
 
 

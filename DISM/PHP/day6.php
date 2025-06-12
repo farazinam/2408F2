@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+    
+<form action="day6.php" method="post">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Product Name</label>
+    <input name="pname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Product Price</label>
+    <input name="pprice" type="number" class="form-control" id="exampleInputPassword1">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Product Description</label>
+    <input name="pdesc" type="text" class="form-control" id="exampleInputPassword1">
+  </div>
+
+  <button name="sub" type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<?php
+
+include("connection.php");
+
+if(isset($_POST["sub"])){
+    $pn = $_POST["pname"];
+    $pp = $_POST["pprice"];
+    $pd = $_POST["pdesc"];
+
+    //echo $pn . $pp . $pd;
+
+    $insrec = "INSERT INTO products (product_name, product_price, product_description)
+    VALUES ('$pn', '$pp', '$pd')";
+
+    mysqli_query($conn, $insrec);
+
+}
+?>
+
+
+
+</body>
+</html>
