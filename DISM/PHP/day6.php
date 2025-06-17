@@ -8,7 +8,7 @@
 </head>
 <body>
     
-<form action="day6.php" method="post">
+<form action="create.php" method="post">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Product Name</label>
     <input name="pname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -26,28 +26,6 @@
 
   <button name="sub" type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-
-<?php
-
-include("connection.php");
-
-if(isset($_POST["sub"])){
-    $pn = $_POST["pname"];
-    $pp = $_POST["pprice"];
-    $pd = $_POST["pdesc"];
-
-    //echo $pn . $pp . $pd;
-
-    $insrec = "INSERT INTO products (product_name, product_price, product_description)
-    VALUES ('$pn', '$pp', '$pd')";
-
-    mysqli_query($conn, $insrec);
-
-}
-?>
-
-
 
 </body>
 </html>
