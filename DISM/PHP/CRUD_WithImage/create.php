@@ -28,7 +28,7 @@ if(isset($_POST["sub"])){
     if($done){
         echo "<script>
         alert('Record Inserted Successfully');
-        //window.location.href = 'read.php';
+        window.location.href = 'read.php';
         </script>";
     }
 }
