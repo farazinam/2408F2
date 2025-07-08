@@ -7,7 +7,8 @@ $sel = "SELECT * FROM image_crud
 INNER JOIN category
 ON image_crud.category_id = category.category_id
 INNER JOIN brand
-ON image_crud.brand_id = brand.brand_id";
+ON image_crud.brand_id = brand.brand_id 
+LIMIT 12";
 $fet = mysqli_query($conn, $sel);
 ?>
 
@@ -16,7 +17,7 @@ $fet = mysqli_query($conn, $sel);
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
+                    <img class="w-100 img-fluid" src="img/carousel-1.jpg" alt="Image">
                     <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-start">
