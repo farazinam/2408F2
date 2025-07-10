@@ -1,3 +1,11 @@
+<?php 
+include("../Admin/connection.php");
+
+$cat = "SELECT * FROM category";
+$q = mysqli_query($conn, $cat);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,12 +76,11 @@
                     <a href="about.html" class="nav-item nav-link">About Us</a>
                     <a href="product.html" class="nav-item nav-link">Products</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Category</a>
                         <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="feature.html" class="dropdown-item">Our Features</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
+                       <?php while($fetch = mysqli_fetch_assoc($q)){ ?>
+                            <a href="blog.html" class="dropdown-item"><?php echo $fetch["category_name"] ?></a>
+                            <?php } ?>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>

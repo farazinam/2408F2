@@ -8,7 +8,7 @@ INNER JOIN category
 ON image_crud.category_id = category.category_id
 INNER JOIN brand
 ON image_crud.brand_id = brand.brand_id 
-LIMIT 12";
+LIMIT 4";
 $fet = mysqli_query($conn, $sel);
 ?>
 
@@ -153,7 +153,7 @@ $fet = mysqli_query($conn, $sel);
                         <?php } ?>
                         
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                            <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Products</a>
+                            <a class="btn btn-primary rounded-pill py-3 px-5" href="product.php">Browse More Products</a>
                         </div>
                     </div>
                 </div>
