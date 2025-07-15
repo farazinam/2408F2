@@ -41,9 +41,9 @@ $q = mysqli_query($conn, $cat);
 
 <body>
     <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status"></div>
-    </div>
+        <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" role="status"></div>
+        </div> -->
     <!-- Spinner End -->
 
 
@@ -74,12 +74,12 @@ $q = mysqli_query($conn, $cat);
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
                     <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="about.html" class="nav-item nav-link">About Us</a>
-                    <a href="product.html" class="nav-item nav-link">Products</a>
+                    <a href="product.php" class="nav-item nav-link">Products</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Category</a>
                         <div class="dropdown-menu m-0">
                        <?php while($fetch = mysqli_fetch_assoc($q)){ ?>
-                            <a href="blog.html" class="dropdown-item"><?php echo $fetch["category_name"] ?></a>
+                            <a href="category.php?id=<?php echo $fetch["category_id"] ?>" class="dropdown-item"><?php echo $fetch["category_name"] ?></a>
                             <?php } ?>
                         </div>
                     </div>

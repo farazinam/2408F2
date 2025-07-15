@@ -1,3 +1,7 @@
+<?php 
+include("connection.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,8 +49,8 @@
         <!-- Sign Up Start -->
         <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
-                <form method="post">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <form method="post">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="index.html" class="">
@@ -76,8 +80,8 @@
                         <button type="submit" name="sub" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
                         <p class="text-center mb-0">Already have an Account? <a href="">Sign In</a></p>
                     </div>
-                </div>
                 </form>
+                </div>
             </div>
         </div>
         <!-- Sign Up End -->
@@ -105,16 +109,33 @@ if(isset($_POST["sub"])){
     $un = $_POST["uname"];
     $em = $_POST["email"];
     $ps = $_POST["pass"];
+    $roleId = 2;
 
-   $ins =  "INSERT INTO users (`name`, `email`, `password`)
-    VALUES ('$un', '$em', '$ps')";
-    $q = mysqli_query($conn, $ins);
+    $hashedPassword = password_hash($ps, PASSWORD_DEFAULT);
 
-    if($q){
+    $sel = "SELECT * FROM users WHERE email = '$em'";
+    $q1 = mysqli_query($conn, $sel);
+
+    $count = mysqli_num_rows($q1);
+
+    if($count > 0){
         echo "<script>
-        alert('Registered Successfully');
-        window.location.href  = 'signin.php';
-        </script>";
+            alert('Already Registered');
+            </script>";
     }
+    else{
+        $ins =  "INSERT INTO users (`name`, `email`, `password`, `role_id`)
+        VALUES ('$un', '$em', '$hashedPassword', '$roleId')";
+        $q2 = mysqli_query($conn, $ins);
+    
+        if($q2){
+            echo "<script>
+            alert('Registered Successfully');
+            window.location.href  = 'signin.php';
+            </script>";
+        }
+    }
+
+   
 }
 ?>

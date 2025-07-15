@@ -7,7 +7,9 @@ INNER JOIN category
 ON image_crud.category_id = category.category_id
 INNER JOIN brand
 ON image_crud.brand_id = brand.brand_id ";
+
 $fet = mysqli_query($conn, $sel);
+
 ?>
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 wow fadeIn" data-wow-delay="0.1s">
@@ -49,6 +51,7 @@ $fet = mysqli_query($conn, $sel);
                     </ul>
                 </div>
             </div>
+
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
                     <div class="row g-4">
@@ -74,8 +77,7 @@ $fet = mysqli_query($conn, $sel);
                                 </div>
                             </div>
                         </div>
-                        <?php } ?>
-                        
+                        <?php } ?>                     
                         <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
                             <a class="btn btn-primary rounded-pill py-3 px-5" href="">Browse More Products</a>
                         </div>
@@ -86,7 +88,6 @@ $fet = mysqli_query($conn, $sel);
         </div>
     </div>
     <!-- Product End -->
-
 
     <!-- Firm Visit Start -->
     <div class="container-fluid bg-primary bg-icon mt-5 py-6">
@@ -161,6 +162,7 @@ $fet = mysqli_query($conn, $sel);
         </div>
     </div>
     <!-- Testimonial End -->
+</script>
 
 <?php 
 include("footer.php");
