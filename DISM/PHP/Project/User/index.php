@@ -1,4 +1,3 @@
-
 <?php 
 include("../Admin/connection.php");
 include("header.php");
