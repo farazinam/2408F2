@@ -1,5 +1,12 @@
 <?php 
 include("../Admin/connection.php");
+session_start();
+
+if($_SESSION['role'] == null){
+    echo "<script>
+    window.location.href='../signin.php';
+    </script>";
+}
 
 $cat = "SELECT * FROM category";
 $q = mysqli_query($conn, $cat);

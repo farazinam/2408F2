@@ -109,16 +109,15 @@ if(isset($_POST["signin"])){
 
     // password_verify($pass, )
 
-    $check = "SELECT * FROM users WHERE email = '$em'";
-    $chkEm = mysqli_query($conn, $check);
+    $check = "SELECT * FROM users WHERE email = '$em' AND `password` = '$pass'";
+    $chkEmPs = mysqli_query($conn, $check);
 
-    $count = mysqli_num_rows($chkEm);
+    $count = mysqli_num_rows($chkEmPs);
 
-   if($chkEm && $count > 0){
-    $fetch = mysqli_fetch_assoc($chkEm);
-    if(password_verify($pass, $fetch["password"])){
-        $_SESSION["e"] = $fetch["email"];
-        $_SESSION["n"] = $fetch["name"];
+   if($count > 0){
+    $fetch = mysqli_fetch_assoc($chkEmPs);
+        $_SESSION["email"] = $fetch["email"];
+        $_SESSION["name"] = $fetch["name"];
         $_SESSION["role"] = $fetch["role_id"];
 
         if($_SESSION["role"] == 1){
@@ -135,7 +134,7 @@ if(isset($_POST["signin"])){
         }
     }
    }
-}
+
 
 
 ?>

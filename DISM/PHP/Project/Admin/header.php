@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if($_SESSION['role'] == null){
+    echo "<script>
+    window.location.href='../signin.php';
+    </script>";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
