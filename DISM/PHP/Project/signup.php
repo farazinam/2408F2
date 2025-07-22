@@ -109,8 +109,9 @@ if(isset($_POST["sub"])){
     $un = $_POST["uname"];
     $em = $_POST["email"];
     $ps = $_POST["pass"];
-    $roleId = 1;
+    $roleId = 2;
 
+    $hashedPassword = password_hash($ps, PASSWORD_DEFAULT);
 
     $sel = "SELECT * FROM users WHERE email = '$em'";
     $q1 = mysqli_query($conn, $sel);
@@ -124,7 +125,7 @@ if(isset($_POST["sub"])){
     }
     else{
         $ins =  "INSERT INTO users (`name`, `email`, `password`, `role_id`)
-        VALUES ('$un', '$em', '$ps', '$roleId')";
+        VALUES ('$un', '$em', '$hashedPassword', '$roleId')";
         $q2 = mysqli_query($conn, $ins);
     
         if($q2){

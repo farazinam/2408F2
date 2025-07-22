@@ -30,7 +30,7 @@ $data = mysqli_fetch_assoc($fet);
                     <p><i class="fa fa-check text-primary me-3"></i><?php echo $data["category_name"] ?></p>
                     <p><i class="fa fa-check text-primary me-3"></i><?php echo $data["brand_name"] ?></p>
                     <a class="btn btn-secondary rounded-pill py-3 px-5 mt-3" href="">Add To Cart</a>
-                    <a class="btn btn-success rounded-pill py-3 px-5 mt-3" href="">Buy Now</a>
+                    <a class="btn btn-success rounded-pill py-3 px-5 mt-3" href="mail.php?id=<?php echo $data["product_id"] ?>">Buy Now</a>
                 </div>
             </div>
         </div>
