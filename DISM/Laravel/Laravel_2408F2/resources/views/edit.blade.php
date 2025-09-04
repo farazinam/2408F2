@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +36,7 @@
         </form>
       </div>
     </div>
-  </nav>
+  </nav> --}}
   
     <form action="{{route('update', ['identity'=>$id->id])}}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -62,5 +62,3 @@
        
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-</body>
-</html>

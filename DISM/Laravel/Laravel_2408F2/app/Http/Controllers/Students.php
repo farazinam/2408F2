@@ -8,7 +8,7 @@ use App\Models\studentmodel;
 class Students extends Controller
 {
     public function welcome(){
-        return view("welcome");
+        return view("layout/app");
     }
 
     public function create(){
