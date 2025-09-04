@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Home Page')
+{{-- @section('title', 'Home Page') --}}
 
 @section('content')
   
@@ -29,4 +29,4 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 
-      @endsection
+@endsection

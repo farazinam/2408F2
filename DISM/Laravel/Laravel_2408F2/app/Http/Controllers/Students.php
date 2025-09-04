@@ -8,7 +8,7 @@ use App\Models\studentmodel;
 class Students extends Controller
 {
     public function welcome(){
-        return view("layout/app");
+        return view("welcome");
     }
 
     public function create(){
@@ -25,7 +25,7 @@ class Students extends Controller
         $stddata->city = $req["sc"];
         $stddata->picture = $imagepath;
         $stddata->save();
-        return view("create");
+        return redirect("read");
     }
 
     public function read(){

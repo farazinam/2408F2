@@ -1,40 +1,54 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/create">Create</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/read">Read</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-             
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+@extends('layout.app')
+
+{{-- @section('title', 'Home Page') --}}
+
+@section('content')
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+      <div class="container py-5">
+          <div class="row">
+              <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                  <div class="position-relative h-100">
+                      <img class="position-absolute w-100 h-100" src="img/about.jpg" style="object-fit: cover;">
+                  </div>
+              </div>
+              <div class="col-lg-7">
+                  <div class="section-title position-relative mb-4">
+                      <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">About Us</h6>
+                      <h1 class="display-4">First Choice For Online Education Anywhere</h1>
+                  </div>
+                  <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+                  <div class="row pt-3 mx-0">
+                      <div class="col-3 px-0">
+                          <div class="bg-success text-center p-4">
+                              <h1 class="text-white" data-toggle="counter-up">123</h1>
+                              <h6 class="text-uppercase text-white">Available<span class="d-block">Subjects</span></h6>
+                          </div>
+                      </div>
+                      <div class="col-3 px-0">
+                          <div class="bg-primary text-center p-4">
+                              <h1 class="text-white" data-toggle="counter-up">1234</h1>
+                              <h6 class="text-uppercase text-white">Online<span class="d-block">Courses</span></h6>
+                          </div>
+                      </div>
+                      <div class="col-3 px-0">
+                          <div class="bg-secondary text-center p-4">
+                              <h1 class="text-white" data-toggle="counter-up">123</h1>
+                              <h6 class="text-uppercase text-white">Skilled<span class="d-block">Instructors</span></h6>
+                          </div>
+                      </div>
+                      <div class="col-3 px-0">
+                          <div class="bg-warning text-center p-4">
+                              <h1 class="text-white" data-toggle="counter-up">1234</h1>
+                              <h6 class="text-uppercase text-white">Happy<span class="d-block">Students</span></h6>
+                          </div>
+                      </div>
+                  </div>
+              </div>
           </div>
-        </div>
-      </nav>
-</body>
-</html> --}}
+      </div>
+  </div>
+  <!-- About End -->
+
+@endsection
