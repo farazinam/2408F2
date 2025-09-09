@@ -17,3 +17,7 @@ Route::controller(students::class)->group(function (){
     Route::get('/edit/{id}', 'edit')->name('editing');
     Route::post('/update/{identity}', 'update')->name('update');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
